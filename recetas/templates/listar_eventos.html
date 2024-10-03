@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Eventos</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .event-list {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .event-item {
+            padding: 10px;
+            border-bottom: 1px solid #dee2e6;
+            transition: background-color 0.3s;
+        }
+        .event-item:hover {
+            background-color: #f1f1f1;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Eventos</h1>
+    <div class="event-list">
+        <ul class="list-unstyled">
+            {% for evento in eventos %}
+                <li class="event-item">
+                    <strong>{{ evento.nombre }}</strong> - {{ evento.descripcion }} - {{ evento.fecha }}
+                </li>
+            {% empty %}
+                <li>No hay eventos disponibles.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="text-center">
+        <a href="{% url 'crear_evento' %}" class="btn btn-primary">Crear Nuevo Evento</a>
+        <a href="{% url 'registrar_usuario' %}" class="btn btn-secondary">Registrar Usuario en Evento</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
